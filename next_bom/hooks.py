@@ -4,7 +4,7 @@ app_publisher = "Chiranjeevi Subburaj"
 app_description = "Bill of Material"
 app_email = "chiranjeevi@dexciss.com"
 app_license = "mit"
-# required_apps = []
+required_apps = ["frappe/erpnext", "quality_deduction"]
 
 # Includes in <head>
 # ------------------
@@ -28,8 +28,7 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"BOM" : "public/js/bom.js",
-            "Job Card":"public/js/job_card.js"}
+doctype_js = {"BOM": "public/js/bom.js", "Job Card": "public/js/job_card.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -125,19 +124,13 @@ doctype_js = {"BOM" : "public/js/bom.js",
 
 doc_events = {
 	"BOM": {
-		"before_save": "next_bom.custom_bom.before_save",
+		"before_validate": "next_bom.custom_bom.before_validate",
 	},
-    "Job Card":{
-        "validate":["next_bom.job_card.job_card_validation",
-                "next_bom.job_card.validate_bom_qty"
-            ],
-            
-            
-        "on_update":"next_bom.job_card.on_update"
-        },
-        
-
-    }
+	"Job Card": {
+		"validate": ["next_bom.job_card.job_card_validation", "next_bom.job_card.validate_bom_qty"],
+		"on_update": "next_bom.job_card.on_update",
+	},
+}
 
 
 # Scheduled Tasks
@@ -231,7 +224,7 @@ doc_events = {
 # ]
 
 # Automatically update python controller files with type annotations for this app.
-# export_python_type_annotations = True
+export_python_type_annotations = True
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
@@ -240,7 +233,7 @@ doc_events = {
 #     {
 #         'doctype':'Custom Field',
 #         'filters':{
-#             'name': ['in', ('BOM Item-custom_is_custom_calculation','BOM Item-custom_formula','BOM Item-custom_reference_row_','BOM Item-custom_type')]   
+#             'name': ['in', ('BOM Item-custom_is_custom_calculation','BOM Item-custom_formula','BOM Item-custom_reference_row_','BOM Item-custom_type')]
 #         }
 #     },
 # #     {
@@ -253,10 +246,28 @@ doc_events = {
 
 
 fixtures = [
-    {
-        "doctype": "Custom Field",
-        "filters": {
-            "module": ["=", "Next BOM"]
-        }
-    }
+	{
+		"doctype": "Custom Field",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"BOM Item-custom_formula",
+					"BOM Item-custom_is_custom_calculation",
+					"BOM Item-custom_reference_row_",
+					"BOM Item-custom_type",
+					"Job Card-custom_balance_qty",
+					"Job Card-custom_column_break_d7idh",
+					"Job Card-custom_column_break_oa1tj",
+					"Job Card-custom_job_card_qty_transfer",
+					"Job Card-custom_received_qty",
+					"Job Card-custom_received_qty_",
+					"Job Card-custom_section_break_fzd1b",
+					"Job Card-custom_transfer_qty",
+					"Job Card-custom_transferred_qty_a",
+				],
+			]
+		],
+	},
 ]

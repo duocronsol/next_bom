@@ -1,0 +1,24 @@
+{
+ "app": "next_bom",
+ "creation": "2026-11-25 14:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "automation-cycle-soft",
+   "link_to": "Next BOM",
+   "link_type": "Sidebar",
+   "title": "Next BOM"
+  }
+ ],
+ "modified": "2026-11-25 14:00:00.000000",
+ "modified_by": "Administrator",
+ "mount_on": "erpnext",
+ "name": "next_bom",
+ "owner": "Administrator",
+ "standard": 1,
+ "user": ""
+}
