@@ -6,6 +6,19 @@ app_email = "chiranjeevi@dexciss.com"
 app_license = "mit"
 required_apps = ["frappe/erpnext", "quality_deduction"]
 
+app_logo_url = "/assets/next_bom/images/next_bom-logo.svg"
+app_home = "/desk/next-bom/bulk-job-card-transfer"
+
+add_to_apps_screen = [
+	{
+		"name": "next_bom",
+		"logo": app_logo_url,
+		"title": "Next BOM",
+		"route": app_home,
+		"sequence_id": 21,
+	}
+]
+
 # Includes in <head>
 # ------------------
 
